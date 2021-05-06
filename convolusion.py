@@ -7,15 +7,15 @@ import random
  
 
 
-def total_conv(imagen,filtro):
-    
+def total_conv(padding,imagen,filtro):
+    imagen = addpadding(padding,imagen)
+    print(imagen)
     x=len(imagen[0])- len(filtro)+1
     y=len(imagen)- len(filtro)+1
     res = np.zeros((x,y))
 
     for i in range(x):
         for j in range(y):
-            print(imagen[j:j+len(filtro[0]),i:i+len(filtro)])
             res[i][j] = np.sum(filtro * imagen[j:j+len(filtro[0]),i:i+len(filtro)])
     plt.imshow(res, cmap='gray')
     plt.show()
@@ -23,12 +23,11 @@ def total_conv(imagen,filtro):
     return res
 
 def addpadding(padding,imagen):
-    x=len(imagen[0])- len(filtro)+1 + padding
-    y=len(imagen)- len(filtro)+1 + padding
+    x=len(imagen) + padding*2
+    y=len(imagen[0]) + padding*2
     imagenPadding = np.zeros((x,y))
-
-    for ren in range(padding, len(imagenPadding[0])-padding):
-        for col in range(padding, len(imagenPadding)-padding):
+    for ren in range(padding, len(imagenPadding)-padding):
+        for col in range(padding, len(imagenPadding[0])-padding):
             imagenPadding[ren,col] = imagen[ren - padding,col - padding]
     return imagenPadding
 
@@ -42,4 +41,6 @@ imagen = np.array( [[1, 2, 3, 4, 5, 6],
 
 filtro = np.random.randint(10,size =(3,3))
 
-print(total_conv(imagen,filtro))
+
+
+print(total_conv(2,imagen,filtro))
