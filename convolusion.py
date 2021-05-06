@@ -29,7 +29,8 @@ def addpadding(padding,imagen):
 
     for ren in range(padding, len(imagenPadding[0])-padding):
         for col in range(padding, len(imagenPadding)-padding):
-            
+            imagenPadding[ren,col] = imagen[ren - padding,col - padding]
+    return imagenPadding
 
 
 
