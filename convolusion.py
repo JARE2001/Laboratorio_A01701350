@@ -22,6 +22,16 @@ def total_conv(imagen,filtro):
 
     return res
 
+def addpadding(padding,imagen):
+    x=len(imagen[0])- len(filtro)+1 + padding
+    y=len(imagen)- len(filtro)+1 + padding
+    imagenPadding = np.zeros((x,y))
+
+    for ren in range(padding, len(imagenPadding[0])-padding):
+        for col in range(padding, len(imagenPadding)-padding):
+            
+
+
 
 imagen = np.array( [[1, 2, 3, 4, 5, 6],
                     [7, 8, 9, 10, 11, 12],
