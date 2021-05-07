@@ -6,7 +6,7 @@ import random
 
  
 
-
+#funcion donde se aplica el flitro a la imagen
 def total_conv(padding,imagen,filtro):
     imagen = addpadding(padding,imagen)
     print(imagen)
@@ -21,7 +21,7 @@ def total_conv(padding,imagen,filtro):
     plt.show()
 
     return res
-
+#funcion que añade el mismo padding de ambos lados a una imagen
 def addpadding(padding,imagen):
     x=len(imagen) + padding*2
     y=len(imagen[0]) + padding*2
@@ -35,6 +35,7 @@ def addpadding(padding,imagen):
 imgx= random.randint(4,6)
 imgy=random.randint(4,6)
 
+#hacemos una matriz random para simular una imagen
 imagen =np.random.randint(10,size =(imgx,imgy))
 
 
@@ -44,8 +45,8 @@ imagen =np.random.randint(10,size =(imgx,imgy))
 #                     [0, 1, 0, 7, 23, 24],
 #                     [1, 7, 6, 5, 4, 3] ])
 
+#hacemos un filtro random para aplicarlo  a la imagen
+
 filtro = np.random.randint(10,size =(3,3))
-
-
 
 print(total_conv(2,imagen,filtro))
